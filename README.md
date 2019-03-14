@@ -129,7 +129,7 @@ chaincode within an enclave.
 
 ## Build the chaincode enclave and ledger enclave
 
-Next build the chaincode enclave [ecc_enclave](ecc_enclave) and the ledgger
+Next build the chaincode enclave [ecc_enclave](ecc_enclave) and the ledger
 enclave [tlcc_enclave](tlcc_enclave). Follow the instructions in the
 corresponding directories.
 
