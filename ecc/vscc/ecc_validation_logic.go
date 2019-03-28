@@ -123,7 +123,7 @@ func (vscc *VSCCECC) checkEnclaveEndorsement(cis *peer.ChaincodeInvocationSpec, 
 		return fmt.Errorf("Fetch channel state failed, err %s", err)
 	}
 	defer channelState.Done()
-	state := &state{channelState}
+	//state := &state{channelState}
 
 	txRWSet := &rwsetutil.TxRwSet{}
 	if err := txRWSet.FromProtoBytes(respPayload.Results); err != nil {
@@ -156,10 +156,10 @@ func (vscc *VSCCECC) checkEnclaveEndorsement(cis *peer.ChaincodeInvocationSpec, 
 		logger.Debugf("pk: %s", base64PublicKey)
 
 		// FIXME: remove hardcoding of those strings
-		attestation, err := state.GetState("ercc", base64PublicKey)
+		/*attestation, err := state.GetState("ercc", base64PublicKey)
 		if err != nil || attestation == nil {
 			return fmt.Errorf("Enclave PK not found in registry")
-		}
+		}*/
 
 		// Next, reproduce sorted read/writeset
 		var readset, writeset [][]byte

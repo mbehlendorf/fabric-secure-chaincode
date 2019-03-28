@@ -17,7 +17,6 @@
 package main
 
 import (
-	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"github.com/hyperledger-labs/fabric-secure-chaincode/ecc/crypto"
@@ -25,9 +24,9 @@ import (
 	"github.com/hyperledger-labs/fabric-secure-chaincode/ecc/ercc"
 	"github.com/hyperledger-labs/fabric-secure-chaincode/ecc/tlcc"
 
+	"github.com/hyperledger-labs/fabric-secure-chaincode/utils"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger-labs/fabric-secure-chaincode/utils"
 )
 
 const enclaveLibFile = "enclave/lib/enclave.signed.so"
@@ -80,8 +79,7 @@ func (t *EnclaveChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response 
 // ============================================================
 func (t *EnclaveChaincode) setup(stub shim.ChaincodeStubInterface) pb.Response {
 	// TODO check that args are valid
-	args := stub.GetStringArgs()
-	erccName := args[1]
+
 	channelName := stub.GetChannelID()
 
 	// check if there is already an enclave
@@ -96,7 +94,7 @@ func (t *EnclaveChaincode) setup(stub shim.ChaincodeStubInterface) pb.Response {
 	}
 
 	//get spid from ercc
-	spid, err := t.erccStub.GetSPID(stub, erccName, channelName)
+	/*spid, err := t.erccStub.GetSPID(stub, erccName, channelName)
 	if err != nil {
 		return shim.Error(err.Error())
 	}
@@ -115,7 +113,7 @@ func (t *EnclaveChaincode) setup(stub shim.ChaincodeStubInterface) pb.Response {
 	if err = t.erccStub.RegisterEnclave(stub, erccName, channelName, []byte(enclavePkBase64), []byte(quoteBase64)); err != nil {
 		return shim.Error(err.Error())
 	}
-
+	*/
 	logger.Debugf("ecc: registration done; next binding")
 	// get target info from our new enclave
 	eccTargetInfo, err := t.enclave.GetTargetInfo()
@@ -134,7 +132,7 @@ func (t *EnclaveChaincode) setup(stub shim.ChaincodeStubInterface) pb.Response {
 		return shim.Error(fmt.Sprintf("Error while binding: %s", err))
 	}
 
-	return shim.Success([]byte(enclavePkBase64))
+	return shim.Success([]byte("test"))
 }
 
 // ============================================================
