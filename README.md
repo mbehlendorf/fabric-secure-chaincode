@@ -129,7 +129,7 @@ chaincode within an enclave.
 
 ## Build the chaincode enclave and ledger enclave
 
-Next build the chaincode enclave [ecc_enclave](ecc_enclave) and the ledgger
+Next build the chaincode enclave [ecc_enclave](ecc_enclave) and the ledger
 enclave [tlcc_enclave](tlcc_enclave). Follow the instructions in the
 corresponding directories.
 
@@ -137,10 +137,10 @@ In the next step we need to integrate the enclave code into a Fabric
 chaincode.  Please follow the instructions in [ecc](ecc) for the chaincode
 enclave and [tlcc](tlcc) for the ledger enclave.
 
-In order to run deploy a chaincode enclave we need to build the enclave
+In order to run and deploy a chaincode enclave we need to build the enclave
 registry. See [ercc](ercc).
 
-Now we have a components we need to run the example auction chaincode in an enclave.
+Now we have all components we need to run the example auction chaincode in an enclave.
 
 
 # References
