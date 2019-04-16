@@ -50,7 +50,7 @@ int ecall_join_channel(uint8_t *genesis, uint32_t gen_len)
 
 int ecall_next_block(uint8_t *block_bytes, uint32_t block_size)
 {
-    return parse_block(block_bytes, block_size);
+    return 0;
 }
 
 int ecall_get_state_metadata(const char *key, uint8_t *nonce, sgx_cmac_128bit_tag_t *cmac)
